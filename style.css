@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+    --leftbackcolor: rgba(100, 150, 250, 0.2);
+    --rightbackcolor: rgba(50, 50, 50, 0.8);
+    --leftbuttonhover: rgb(250, 200, 50);
+    --rightbuttonhover: rgba(250, 100, 0, 1);
+    --bigwidth: 60%;
+    --smallwidth: 40%;
+    --speed: 1000ms;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+h1 {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 4rem;
+    color: white;
+}
+
+.button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    top: 65%;
+    transform: translateX(-50%);
+    text-decoration: none;
+    color: white;
+    border: white solid 0.2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    width: 15rem;
+    padding: 1.5rem;
+}
+
+.split.left .button:hover {
+    background-color: var(--leftbuttonhover);
+    border-color: var(--leftbuttonhover);
+}
+
+.split.right .button:hover {
+    background-color: var(--rightbuttonhover);
+    border-color: var(--rightbuttonhover);
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #333;
+}
+
+.split {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.split.left {
+    left: 0;
+    background: url('https://static.wikia.nocookie.net/spartanunsc/images/a/a9/H5G_Render_John117-Profile.png/revision/latest?cb=20181013212639');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.split.left::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--leftbackcolor);
+}
+
+.split.right {
+    right: 0;
+    background: url('https://upload.wikimedia.org/wikipedia/en/0/02/CoD_Black_Ops_cover.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.split.right::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--rightbackcolor);
+}
+
+.split.right,
+.split.left,
+.split.right::before,
+.split.left::before {
+    transition: all var(--speed) ease-in-out;
+}
+
+.hover-left .left {
+    width: var(--bigwidth);
+}
+
+.hover-left .right {
+    width: var(--smallwidth);
+}
+
+.hover-right .right {
+    width: var(--bigwidth);
+}
+
+.hover-right .left {
+    width: var(--smallwidth);
+}
